@@ -1,0 +1,7 @@
+C:\work\SharedPr\libraries\PDFHelper\PdfHelperLibrary\obj\Debug\PdfHelperLibrary.csprojResolveAssemblyReference.cache
+C:\work\SharedPr\libraries\PDFHelper\PdfHelperLibrary\bin\Debug\PdfHelperLibrary.dll
+C:\work\SharedPr\libraries\PDFHelper\PdfHelperLibrary\bin\Debug\PdfHelperLibrary.pdb
+C:\work\SharedPr\libraries\PDFHelper\PdfHelperLibrary\bin\Debug\itextsharp.dll
+C:\work\SharedPr\libraries\PDFHelper\PdfHelperLibrary\bin\Debug\itextsharp.xml
+C:\work\SharedPr\libraries\PDFHelper\PdfHelperLibrary\obj\Debug\PdfHelperLibrary.dll
+C:\work\SharedPr\libraries\PDFHelper\PdfHelperLibrary\obj\Debug\PdfHelperLibrary.pdb
