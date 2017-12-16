@@ -90,7 +90,7 @@ namespace PdfHelperLibrary
             {
 
                 bf = BaseFont.CreateFont(AppDomain.CurrentDomain.BaseDirectory + fontAdress, BaseFont.IDENTITY_H, true);
-                f2 = new iTextSharp.text.Font(bf, TextSize, iTextSharp.text.Font.NORMAL, new BaseColor(int.Parse(TextColor, System.Globalization.NumberStyles.HexNumber)));
+                f2 = new iTextSharp.text.Font(bf, TextSize, iTextSharp.text.Font.NORMAL, new BaseColor(int.Parse(TextColor.Replace("#",""), System.Globalization.NumberStyles.HexNumber)));
                 table = new PdfPTable(numColumns: 1);
 
                 pdfCell = new PdfPCell(new Phrase(stringText, f2));

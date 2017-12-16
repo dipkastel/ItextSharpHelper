@@ -49,11 +49,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PText.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="fonts\IRAN-Sans.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
