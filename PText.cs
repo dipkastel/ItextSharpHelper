@@ -25,10 +25,13 @@ namespace PdfHelperLibrary
                 paddingTop = 0,
                 paddingRight = 0,
                 paddingLeft = 0,
-                paddingBottom = 0;
+                paddingBottom = 0,
+                spacingBefor = 0,
+                spacingAfter = 0;
             bool
                 isRTL = true,
-                borderEnable = false;
+                borderEnable = false,
+                isTitle =false;
             BaseColor
                 BorderColor = BaseColor.BLACK;
             float
@@ -59,9 +62,25 @@ namespace PdfHelperLibrary
                 TextColor = color;
                 return this;
             }
+
+            public PText setAsTitle(bool _isTitle)
+            {
+                isTitle = _isTitle;
+                return this;
+            }
             public PText setTextSize(int size)
             {
                 TextSize = size;
+                return this;
+            }
+            public PText setSpacingBefor(int size)
+            {
+                spacingBefor = size;
+                return this;
+            }
+            public PText setSpacingAfter(int size)
+            {
+                spacingAfter = size;
                 return this;
             }
             public PText setPaddingTop(int size)
@@ -92,8 +111,23 @@ namespace PdfHelperLibrary
                 bf = BaseFont.CreateFont(AppDomain.CurrentDomain.BaseDirectory + fontAdress, BaseFont.IDENTITY_H, true);
                 f2 = new iTextSharp.text.Font(bf, TextSize, iTextSharp.text.Font.NORMAL, new BaseColor(int.Parse(TextColor.Replace("#",""), System.Globalization.NumberStyles.HexNumber)));
                 table = new PdfPTable(numColumns: 1);
+                //------------------------
+                Paragraph paragraphTables = new Paragraph();
+                PdfPCell pdfCells = new PdfPCell(new Phrase(" ", f2));
+                PdfPTable tables = new PdfPTable(numColumns: 1);
 
-                pdfCell = new PdfPCell(new Phrase(stringText, f2));
+                tables.AddCell(pdfCells);
+                paragraphTables.Add("");
+                document.Add(paragraphTables);
+                //------------------------
+
+                Paragraph paragraphTable = new Paragraph();
+                paragraphTable.SpacingBefore = spacingBefor;
+                paragraphTable.SpacingAfter = spacingAfter;
+                paragraphTable.Clear();
+                Phrase phrase = new Phrase(stringText, f2);
+                pdfCell = new PdfPCell(phrase);
+                pdfCell.SetLeading(0, 2);
                 if (isRTL)
                 {
                     table.RunDirection = PdfWriter.RUN_DIRECTION_RTL;
@@ -115,13 +149,28 @@ namespace PdfHelperLibrary
                     pdfCell.BorderWidth = 0;
                 }
 
+                if (isTitle) { 
+                
+                
+                }
+                
                 pdfCell.PaddingTop = paddingTop;
                 pdfCell.PaddingRight = paddingRight;
                 pdfCell.PaddingBottom = paddingBottom;
                 pdfCell.PaddingLeft = paddingLeft;
                 
                 table.AddCell(pdfCell);
-                document.Add(table);
+                paragraphTable.Add(table);
+                document.Add(paragraphTable);
+
+
+
+                //------------------------
+                Paragraph paragraphTables2 = new Paragraph();
+                PdfPCell pdfCells2 = new PdfPCell(new Phrase(" ", f2));
+                paragraphTables2.Add("");
+                document.Add(paragraphTables2);
+                //------------------------
 
             }
 

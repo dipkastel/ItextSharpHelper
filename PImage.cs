@@ -57,6 +57,9 @@ namespace PdfHelperLibrary
                 float pageHeight = Document.PageSize.Height;
                 if (IsHeader)
                 {
+                    //fit to screen
+                    x = Document.PageSize.Width;
+                    y = x / retio;
 
                     marginBottom = (int)(pageHeight - y);
                 }
